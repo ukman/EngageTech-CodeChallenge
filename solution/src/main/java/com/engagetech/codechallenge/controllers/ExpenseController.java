@@ -3,6 +3,7 @@ package com.engagetech.codechallenge.controllers;
 import com.engagetech.codechallenge.data.dto.ExpenseCreateProjectionDto;
 import com.engagetech.codechallenge.data.model.Expense;
 import com.engagetech.codechallenge.data.projection.ExpenseIdLessProjection;
+import com.engagetech.codechallenge.data.projection.ExpenseWithVatProjection;
 import com.engagetech.codechallenge.services.ExpenseService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -38,8 +39,8 @@ public class ExpenseController {
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = ExpenseIdLessProjection.class))})
     })
-    public List<ExpenseIdLessProjection> getExpenses(Principal principal) {
-        List<ExpenseIdLessProjection> res = expenseService.getExpenses(ExpenseIdLessProjection.class);
+    public List<ExpenseWithVatProjection> getExpenses(Principal principal) {
+        List<ExpenseWithVatProjection> res = expenseService.getExpenses(ExpenseWithVatProjection.class);
         return res;
     }
 
