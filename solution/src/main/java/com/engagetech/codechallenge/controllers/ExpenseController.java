@@ -1,6 +1,7 @@
 package com.engagetech.codechallenge.controllers;
 
 import com.engagetech.codechallenge.data.dto.ExpenseCreateProjectionDto;
+import com.engagetech.codechallenge.data.dto.ExpenseWithCurrencyCreateDto;
 import com.engagetech.codechallenge.data.model.Expense;
 import com.engagetech.codechallenge.data.projection.ExpenseIdLessProjection;
 import com.engagetech.codechallenge.data.projection.ExpenseWithVatProjection;
@@ -13,6 +14,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 import java.security.Principal;
 import java.util.List;
@@ -53,7 +55,7 @@ public class ExpenseController {
             @ApiResponse(responseCode = "400", description = "Validation error",
                     content = @Content)
     })
-    public Expense createExpense(@RequestBody ExpenseCreateProjectionDto expenseCreateProjection) {
-        return expenseService.createExpense(expenseCreateProjection);
+    public Mono<Expense> createExpense(@RequestBody ExpenseWithCurrencyCreateDto expenseCreateDto) {
+        return expenseService.createExpenseWithoutRate(expenseCreateDto);
     }
 }

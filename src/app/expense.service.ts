@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ExpenseService {
 
-  private expensesUrl = '/app/expenses';
+  private expensesUrl = 'http://localhost:8000/api/expenses';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

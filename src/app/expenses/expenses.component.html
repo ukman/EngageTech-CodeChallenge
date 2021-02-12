@@ -13,7 +13,7 @@
 		</p>
 		<p>
 			<label>VAT</label>
-			<input type="text" readonly disabled value="{{newExpense.amount*vat| number : '1.2-2'}}" name="vat"/>
+			<input type="text" readonly disabled value="{{calculateVat(newExpense.amount)| number : '1.2-2'}}" name="vat"/>
 		</p>
 		<p>
 			<label>Reason</label>
