@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Expense } from './expense';
 import { ExpenseService } from '../expense.service';
+import { VatService } from '../vat.service';
 
 @Component({
   selector: 'app-expenses',
@@ -14,10 +15,15 @@ export class ExpensesComponent implements OnInit {
 
   expenses: Expense[];
 
-  constructor(private expenseService: ExpenseService) { }
+  vat: number;
+
+  constructor(private expenseService: ExpenseService,
+    private vatService: VatService,
+  ) { }
 
   ngOnInit(): void {
     this.loadExpenses();
+    this.loadVat();
   }
 
   private loadExpenses(): void {
@@ -34,7 +40,14 @@ export class ExpensesComponent implements OnInit {
   }
 
   clearExpense(): void {
-    this.newExpense = {};
+      this.newExpense = {
+      };
   }
 
+
+  private loadVat(): void {
+    this.vatService.getVat("uk").subscribe((vat) => {
+      this.vat = vat;
+    });
+  }
 }

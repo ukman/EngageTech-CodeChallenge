@@ -5,18 +5,22 @@
 	<form>
 		<p>
 			<label>Date</label>
-			<input type="text" [(ngModel)]="newExpense.date" name="date" placeholder="dd/mm/yyyy" />
+			<input type="date" [(ngModel)]="newExpense.date" name="date" placeholder="dd/mm/yyyy" />
 		</p>
 		<p>
 			<label>Amount</label>
 			<input type="text" [(ngModel)]="newExpense.amount" name="amount" placeholder="00.00" />
 		</p>
 		<p>
+			<label>VAT</label>
+			<input type="text" readonly disabled value="{{newExpense.amount*vat| number : '1.2-2'}}" name="vat"/>
+		</p>
+		<p>
 			<label>Reason</label>
 			<textarea [(ngModel)]="newExpense.reason" name = "reason" placeholder="Why oh why?"></textarea>
 		</p>
 		<p class="buttons-row">
-			<button (click)="saveExpense()" class="solid">Save Expense</button> 
+			<button (click)="saveExpense()" class="solid">Save Expense</button>
 			<button (click)="clearExpense()">Cancel</button>
 		</p>
 	</form>

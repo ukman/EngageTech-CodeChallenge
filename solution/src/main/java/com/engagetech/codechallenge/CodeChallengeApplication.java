@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 
 /**
  * Code challellenge for EngageTech
- * @author Sergei Grigorchuk sergey.grigorchuk@toptal.com
  */
 @SpringBootApplication
 @EnableAutoConfiguration

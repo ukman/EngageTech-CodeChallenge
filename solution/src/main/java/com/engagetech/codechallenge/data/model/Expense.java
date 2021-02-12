@@ -1,9 +1,9 @@
 package com.engagetech.codechallenge.data.model;
 
 import com.engagetech.codechallenge.config.SecurityAuditorAware;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.annotations.Formula;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.CreatedBy;
 
 import javax.persistence.*;
@@ -22,9 +22,17 @@ import java.util.Currency;
 @ToString
 @Entity
 @EntityListeners(SecurityAuditorAware.class)
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Expense {
+  // TODO Inject it from config file
+  /**
+   * Vat rate for calculation VAT amount for expenses
+   */
+  public static final double VAT_RATE = 0.2;
 
-    @Id
+  @Id
     @GeneratedValue
     private Long id;
 
@@ -53,4 +61,7 @@ public class Expense {
      */
     @CreatedBy
     private String createdBy;
+
+    @Formula("round(amount * " + VAT_RATE + ", 2)")
+    private double vat;
 }
