@@ -37,6 +37,10 @@ Basic Authentication header for the API. After redesigning to OpenID this will w
 Open PostMan and import http://localhost:8000/v3/api-docs . 
 Use login = `admin` , password = `password` for basic authorization in PostMan. 
 
+## Using Chrome
+CORS problem in Angular are currently not configured so disable security as described here
+https://alfilatov.com/posts/run-chrome-without-cors/ for your OS
+
 IMPORTANT
 ====
 To avoid unconcious bias, we aim to have your submission reviewed anonymously by one of our engineering team. Please try and avoid adding personal details to this document such as your name, or using pronouns that might indicate your gender.
