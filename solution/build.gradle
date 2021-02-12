@@ -49,6 +49,10 @@ dependencies {
 
 	compile group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.5.3'
 	compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.9'
+
+  implementation 'org.springframework.boot:spring-boot-starter-webflux'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation 'io.projectreactor:reactor-test'
 }
 
 test {

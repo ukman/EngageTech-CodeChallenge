@@ -44,6 +44,9 @@ export class ExpensesComponent implements OnInit {
       };
   }
 
+  calculateVat(amount: string): number {
+    return Math.round(parseFloat(amount) * this.vat * 100) / 100;
+  }
 
   private loadVat(): void {
     this.vatService.getVat("uk").subscribe((vat) => {
